@@ -1,0 +1,113 @@
+:root {
+    --menu_color: #0e61db;
+    --backround_color: #1A1A1B;
+    --input_backround_color: #272729;
+  }
+
+.custom-card{
+    background-color: var(--backround_color);
+    color: white;
+    min-height: 100%;
+}
+.custom-container{
+    background-color: #252930;
+    color: white;
+    max-width: 200px;
+    height: 70px;
+}
+
+.form-control{
+    background-color: var(--input_backround_color);
+    color: white;
+}
+
+.form-control:focus {
+    background-color: var(--input_backround_color) !important;
+    color: white;
+}
+
+  .vmi{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    align-items: flex-end;
+    padding: 10px;
+  }
+
+
+label {
+    color: rgb(255, 255, 255);
+    padding: 4px;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size:  15px;
+  }
+
+
+.mt-6{
+    margin-top: 5rem;
+}
+
+.mb-6{
+    margin-bottom: 5rem;
+}
+
+.mb-7{
+    margin-bottom: 6rem;
+}
+
+  @import url('https://fonts.googleapis.com/css?family=Kalam');
+.text{
+    font-family: "Kalam", cursive;
+    text-align: center;
+    font-size: 60px;
+    color: var(--menu_color);
+    text-shadow: #39395a -4px 3px 2px;
+}
+
+@media (max-width: 576px) {
+    .custom-card {
+      width: 100%;
+    }
+    .custom-input{
+      width: 100%;
+    }
+  }
+
+  @media (min-width: 577px) and (max-width: 991px) {
+    .custom-card {
+      width: 700px;
+    }
+    .custom-input{
+        max-width: 600px;
+    }
+  }
+
+  @media (min-width: 992px) {
+    .custom-card {
+      width: 1000px;
+    }
+    .custom-input{
+        max-width: 800px;
+        min-height: 50px;
+    }
+  }
+
+
+.float-right{
+    float: right;
+}
+
+.float-left{
+    float:left;
+}
+
+
+@media (max-width: 1000px) {
+    .float-right{
+        float:none;
+    }
+    .float-left{
+        float:none;
+    }
+}
