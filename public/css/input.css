@@ -1,0 +1,45 @@
+:root{
+    --input_backround_color: #272729;
+}
+
+.vmi{
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding: 10px;
+    z-index: 1;
+  }
+
+.form-control{
+    background-color: var(--input_backround_color);
+    color: white;
+}
+
+.form-control:focus {
+    background-color: var(--input_backround_color) !important;
+    color: white;
+}
+
+  @media (max-width: 576px) {
+    .custom-input{
+      width: 100%;
+    }
+  }
+
+  @media (min-width: 577px) and (max-width: 991px) {
+    .custom-input{
+        min-width: 600px;
+    }
+  }
+
+  @media (min-width: 992px) {
+    .custom-input{
+        min-width: 800px;
+        min-height: 50px;
+    }
+  }

@@ -1,8 +1,5 @@
 @extends('layouts.app')
 @section('content')
-<div class="d-flex justify-content-center mt-0 mt-lg-4">
-    <div class="card custom-card">
-
         <div class="row">
             <div class="col text-center mt-6">
                 <div class="text">Learning using a new approach</div>
@@ -62,17 +59,6 @@
                     <label>infó</label>
                 </div>
             </div>
-
         </div>
-
-    </div>
-        <div class="vmi mb-3">
-            <div class="input-container d-flex justify-content-center">
-                <input type="text" class="form-control custom-input"
-                placeholder="Üzenet küldés" aria-label="Large">
-            </div>
-        </div>
-</div>
-
 
 @endsection

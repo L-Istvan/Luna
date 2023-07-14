@@ -12,21 +12,29 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <!--Bostrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    <link rel="stylesheet" href= "{{ asset('css/header.css') }}">
-    <link rel="stylesheet" href= "{{ asset('css/index.css') }}">
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 
     {{-- <script src="{{asset('jquery-3.7.0.min.map')}}"> --}}
 
+    <link rel="stylesheet" href= "{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href= "{{ asset('css/header.css') }}">
+    <link rel="stylesheet" href= "{{ asset('css/input.css') }}">
+    <link rel="stylesheet" href= "{{ asset('css/card.css') }}">
+    <link rel="stylesheet" href= "{{ asset('css/index.css') }}">
+
 </head>
 <body class="font-sans antialiased" style="background-color: #1A1A1B;">
     @include('layouts.header')
     <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
-        @yield('content')
+        <div class="d-flex justify-content-center mt-0 mt-lg-4">
+            <div class="card custom-card">
+                @include('layouts.input')
+                @yield('content')
+            </div>
+        </div>
     </div>
-
 </body>
 </html>
