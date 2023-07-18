@@ -16,12 +16,12 @@
 
   @media (min-width: 577px) and (max-width: 991px) {
     .custom-card {
-      width: 700px;
+      width: 600px;
     }
   }
 
   @media (min-width: 992px) {
     .custom-card {
-      width: 1000px;
+      width: 800px;
     }
   }

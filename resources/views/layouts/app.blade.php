@@ -25,6 +25,8 @@
     <link rel="stylesheet" href= "{{ asset('css/card.css') }}">
     <link rel="stylesheet" href= "{{ asset('css/index.css') }}">
 
+
+
 </head>
 <body class="font-sans antialiased" style="background-color: #1A1A1B;">
     @include('layouts.header')
@@ -34,6 +36,7 @@
                 @include('layouts.input')
                 @yield('content')
             </div>
+            <div>
         </div>
     </div>
 </body>
