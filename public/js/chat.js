@@ -1,4 +1,4 @@
-function AI(){
+function AI(text){
     var container = document.getElementById("container");
     var newDiv = document.createElement("div");
     newDiv.className = 'AI'
@@ -10,7 +10,7 @@ function AI(){
     avatarDiv.classList.add("position-relative", "avatar");
 
     var imgElem = document.createElement("img");
-    imgElem.src = "images/favicon.ico";
+    imgElem.src = "/images/favicon.ico";
     imgElem.classList.add("img-fluid", "rounded-circle");
     imgElem.alt = "";
 
@@ -21,7 +21,7 @@ function AI(){
 
     var cardDiv = document.createElement("div");
     cardDiv.classList.add("card", "card-text", "d-inline-block", "p-2", "px-3", "m-1");
-    cardDiv.textContent = "{{ $alma }}";
+    cardDiv.textContent = text;
 
     peDiv.appendChild(cardDiv);
 
@@ -76,9 +76,26 @@ document.getElementById("chatInput").onkeydown = function(event) {
         chatInputValue = document.getElementById("chatInput").value;
         if (chatInputValue !== ""){
             user(chatInputValue);
+            sendChatInput(chatInputValue);
             document.getElementById("chatInput").value = "";
         }
     }
   };
 
-AI();
+function sendChatInput(data){
+    $.ajax({
+        headers:{
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        type: 'POST',
+        url: '/chatInput',
+        data: JSON.stringify(data),
+        success: function(xhr){
+            AI(xhr);
+        },
+        error: function(xhr){
+            AI(xhr);
+        }
+    })
+}
+
