@@ -21,3 +21,25 @@
     color: var(--menu_background);
     font-size: 16px;
 }
+
+  .modal-header,
+  .modal-body,
+  .modal-footer {
+    margin: 0;
+  }
+
+.modal-header {
+    background-color: #2B2D31;
+}
+
+.modal-title{
+    color:white;
+}
+
+.modal-body {
+    background-color: #313338;
+}
+
+.modal-footer {
+    background-color: #313338;
+}

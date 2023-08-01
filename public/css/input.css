@@ -1,8 +1,9 @@
 :root{
     --input_backround_color: #272729;
+    --border_color : #1c4d97;
 }
 
-.vmi{
+.input{
     position: fixed;
     bottom: 0;
     left: 50%;
@@ -18,11 +19,16 @@
 .form-control{
     background-color: var(--input_backround_color);
     color: white;
+    border:3px solid var(--border_color);
 }
 
 .form-control:focus {
     background-color: var(--input_backround_color) !important;
     color: white;
+}
+
+.form-control:disabled {
+    background-color: var(--input_backround_color);
 }
 
   @media (max-width: 576px) {
