@@ -11,9 +11,13 @@
                     Szó kincs fejlesztés
                 </a>
                 <ul class="dropdown-menu dropdown-menu-dark">
-                  <li><a class="dropdown-item" href="{{ route('chat.practicingLearnedWords') }}">Tanult szavak gyakorlása</a></li>
-                  <li><a class="dropdown-item" href="{{ route('chat.readingFromLearnedWords') }}">Tanult szavakból olvasmány</a></li>
+                  <li><a class="dropdown-item" href="{{ route('reading.index') }}">Szavakból olvasmány</a></li>
                   <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="{{ route('chat.practicingLearnedWords') }}">Tanult szavak gyakorlása</a>
+                    <select name="dropdown" class="rounded" style="color:rgb(3, 3, 3); background-color: rgb(80, 141, 184); border-color: rgb(90, 156, 204)">
+                        <option value="" disabled selected hidden>Szótár választás</option>
+                    </select>
+                  </li>
                   <li><a class="dropdown-item" href="{{ route('chat.practicingUnknownWords') }}">Ismeretlen szavak gyakorlása</a></li>
                 </ul>
               </li>
@@ -22,7 +26,19 @@
                     Szótár
                 </a>
                 <ul class="dropdown-menu dropdown-menu-dark">
-                  <li><a class="dropdown-item" href="{{ route('chat.createNewDictionary') }}">Új szótár létrehozása</a></li>
+                    @if ( $tableNames === 0 )
+                    <li>
+                        <a class="dropdown-item" href="" data-bs-toggle="modal" data-bs-target="#myModal">
+                            Nincsen még szótárod, hozz létre egyet
+                        </a>
+                    @else
+                        <a class="dropdown-item" href="" data-bs-toggle="modal" data-bs-target="#myModal">
+                            Új szótár létrehozás
+                        </a>
+                        @foreach ($tableNames as $name)
+                            <li><a class="dropdown-item" href="{{ route('dictionary.edit',$name) }}">{{ $name }}</a></li>
+                        @endforeach
+                    @endif
                 </ul>
             </li>
             <li class="nav-item dropdown">
@@ -61,3 +77,33 @@
       </div>
     </div>
   </nav>
+
+
+  <!--------- modal -------->
+<div class="modal" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <h4 class="modal-title">Szótár létrehozás</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+
+        <div class="modal-body">
+            <label id="error"></label>
+            @error('modalInput')
+                <div class="alert alert-danger">{{ $message }}</div>
+             @enderror
+            <div class="d-flex justify-content-start">
+                <input id="modalInput" type="text" name="modalInput" placeholder="Tábla neve">
+            </div>
+            <div class="d-flex justify-content-end">
+                <button type="submit" class="btn btn-success" onclick="submitModalInput()">Mentés</button>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Mégse</button>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
