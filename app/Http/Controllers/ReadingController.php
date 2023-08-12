@@ -16,6 +16,10 @@ class ReadingController extends Controller
         return view('reading',['tableNames' => $tableNames]);
     }
 
+    public function show(){
+        return view('chat',["chatGPT_text" => "Add meg a szavakat szoközzel elválasztva és már generálom is."]);
+    }
+
     public function generateTextFromSavedWords(Request $request){
         Debugbar::info($request['dropdown']);
         $request->validate([
@@ -32,10 +36,7 @@ class ReadingController extends Controller
         return response()->json('Nem sikerült a szavak lekérdezése.',404);
     }
 
-    public function individually()
-    {
-        return view('chat',["chatGPT_text" => "Add meg a szavakat szoközzel elválasztva vagy vesszővel és már generálom is."]);
-    }
+
 
 
 

@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\DictionaryTableValues;
 use Barryvdh\Debugbar\Facades\Debugbar;
 use App\Http\Controllers\ChatGPT;
+use Exception;
 use Illuminate\Support\Facades\Redis;
 
 class PracticingWrodsController extends Controller
@@ -83,7 +84,9 @@ class PracticingWrodsController extends Controller
         $dictionaryTableNames = DictionaryTableNames::existsTableNameByUserId($request['dictionaryName'],Auth::user()->id);
         if (!$dictionaryTableNames) return response()->json("Nincs ilyen szótár",404);
 
-        $words = $dictionaryTableNames->dictionaryTableValues->toArray();
+        $words = $dictionaryTableNames->dictionaryTableValues($request['dictionaryName'])->toArray();
+        if($words == null) return response()->json("Nem találtam szavakat a szótárban.",404);
+
         $proportionalityValues = collect($words)->pluck('proportionality')->toArray();
         $selectedIndex = $this->rouletWheel($proportionalityValues);
 

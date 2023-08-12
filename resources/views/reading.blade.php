@@ -27,7 +27,7 @@
         <h5>Egyénileg hozzá adott szavakból olvasmány generálása</h5>
     </div>
 
-    <form action="{{ route('reading.individually') }}" method="get">
+    <form action="{{ route('reading.show') }}" method="get">
         <div class="text-center">
             <button type="submit" class="rounded" style="color:rgb(3, 3, 3); background-color: rgb(80, 141, 184); border-color: rgb(90, 156, 204)">Szavak hozzáadása</button>
         </div>

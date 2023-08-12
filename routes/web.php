@@ -44,7 +44,7 @@ Route::middleware('auth')->group(function () {
     Route::get('chat/tanult_szavak', [ChatController::class,'practicingLearnedWords'])->name('chat.practicingLearnedWords');
 
     Route::get('/olvasas/valasztas',[ReadingController::class,'index'])->name('reading.index');
-    Route::get('/olvasas/ismeretlen_szavakkal',[ReadingController::class,'individually'])->name('reading.individually');
+    Route::get('/olvasas/ismeretlen_szavakkal',[ReadingController::class,'show'])->name('reading.show');
 
     Route::get('szotar/letrehozas',[DictionaryController::class,'create'])->name('dictionary.create');
     Route::get('szotar/{szerkesztes}',[DictionaryController::class,'edit'])->name('dictionary.edit');
@@ -56,6 +56,7 @@ Route::middleware('auth')->group(function () {
     Route::post('sendDictionaryName',[PracticingWrodsController::class,'showLearnedWords'])->name('practicingWords.learnedWords');
     Route::get('szotarbol_szavak_gyakorlas/{szotar}',[PracticingWrodsController::class,'index'])->name('practicingWords.index');
     Route::post('AIHelp',[PracticingWrodsController::class,'AIHelp'])->name('practicingWords.AIHelp');
+    Route::get('ismeretlen_szavak_gyakorlas',[PracticingWrodsController::class,'index'])->name('practicingWords.unknownWords');
 
     Route::get('chat/idegen_szavak',[ChatController::class,'practicingUnknownWords'])->name('chat.practicingUnknownWords');
 

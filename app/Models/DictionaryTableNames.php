@@ -16,8 +16,10 @@ class DictionaryTableNames extends Model
 
     public $timestamps = false;
 
-    public function dictionaryTableValues(){
-        return $this->hasMany(DictionaryTableValues::class,'user_id','user_id');
+    public function dictionaryTableValues($tableName){
+        return $this->hasMany(DictionaryTableValues::class,'user_id','user_id')
+        ->where('tableName',$tableName)
+        ->get();
     }
 
 

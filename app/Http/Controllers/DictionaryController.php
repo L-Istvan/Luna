@@ -34,7 +34,7 @@ class DictionaryController extends Controller
     public function edit($tableName){
         $dictionaryTableNames =  DictionaryTableNames::existsTableNameByUserId($tableName,Auth::user()->id);
         if ($dictionaryTableNames){
-            $dictionaryTableValues = $dictionaryTableNames->dictionaryTableValues;
+            $dictionaryTableValues = $dictionaryTableNames->dictionaryTableValues($tableName);
             return  view('dictionary',["tableValues" => $dictionaryTableValues,"tableName" => $tableName]);
         }
         if(!$dictionaryTableNames){

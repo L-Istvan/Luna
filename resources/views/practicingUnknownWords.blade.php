@@ -5,7 +5,7 @@
 
 <div class="card-body">
     <div id="container">
-        <div id="dictionaryName" data-name="{{ $dictionaryName }}"></div>
+
     </div>
 </div>
 
