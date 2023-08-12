@@ -13,12 +13,14 @@ class ReadingController extends Controller
     {
         $tableNames = DictionaryTableNames::tableNamesByUser(Auth::user()->id);
         if ($tableNames === 0) $tableNames = ["Jelenleg nincs táblája."];
-        return view('reading',['tableNames' => $tableNames]);
+        return view('reading/selectionPage',['tableNames' => $tableNames]);
     }
 
     public function show(){
-        return view('chat',["chatGPT_text" => "Add meg a szavakat szoközzel elválasztva és már generálom is."]);
+        return view('reading/reading',["chatGPT_text" => "Add meg a szavakat szoközzel elválasztva és már generálom is."]);
     }
+
+
 
     public function generateTextFromSavedWords(Request $request){
         Debugbar::info($request['dropdown']);
@@ -32,7 +34,7 @@ class ReadingController extends Controller
 
         $dictionaryTableValues = $dictionaryTableNames->dictionaryTableValues->pluck('english');
 
-        if ($dictionaryTableValues)return view('chat',['englishWords' => $dictionaryTableValues]);
+        if ($dictionaryTableValues)return view('reading/reading',['englishWords' => $dictionaryTableValues]);
         return response()->json('Nem sikerült a szavak lekérdezése.',404);
     }
 

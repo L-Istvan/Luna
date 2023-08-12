@@ -1,7 +1,11 @@
+import Chat from '/js/Chat.js';
+const chat = new Chat();
+
 var dictionaryName = document.getElementById('dictionaryName').getAttribute('data-name');
 var lastQuestion = null;
 var currentLanguage = 1;
 var level = 1;
+var message;
 
 function sendDictionaryTable(dictionaryName,selectedEnglish,question,answer){
     $.ajax({
@@ -20,7 +24,7 @@ function sendDictionaryTable(dictionaryName,selectedEnglish,question,answer){
         success: function(xhr){
             lastQuestion = xhr['word'];
             message = xhr['message'] + xhr['word'];
-            window.AI(message);
+            chat.AI(message);
         },
         error: function(xhr){
             toastr.error(xhr.responseJSON);
@@ -31,8 +35,7 @@ function sendDictionaryTable(dictionaryName,selectedEnglish,question,answer){
 function updateContainerContent(dictionaryName) {
     var containerElement = document.getElementById('container');
     containerElement.innerHTML = `
-        <div id="dictionaryName" data-name="${dictionaryName}"></div>
-    `;
+        <div id="dictionaryName" data-name="${dictionaryName}"></div>`;
 }
 
 function AIHelp(){
@@ -49,7 +52,7 @@ function AIHelp(){
         dataType: 'json',
         success: function(xhr){
             console.log(xhr);
-            window.AI(xhr);
+            chat.AI(xhr);
         },
         error: function(xhr){
             toastr.error(xhr.responseJSON);
@@ -62,7 +65,7 @@ document.getElementById("chatInput").onkeydown = function(event) {
     if (event.keyCode === 13) {
         chatInputValue = document.getElementById("chatInput").value;
         if (chatInputValue !== ""){
-            window.user(chatInputValue);
+            chat.user(chatInputValue);
             console.log(chatInputValue);
             sendDictionaryTable(dictionaryName,currentLanguage,lastQuestion,chatInputValue);
             document.getElementById("chatInput").value = "";
@@ -70,11 +73,13 @@ document.getElementById("chatInput").onkeydown = function(event) {
     }
 };
 
+$(document).ready(function() {
+    sendDictionaryTable(dictionaryName,currentLanguage,"apple","");
+});
 
 const button = document.getElementById("changeButton");
 const buttonText = document.getElementById("buttonText");
 
-// Kattintás eseménykezelő
 button.addEventListener("click", function () {
     if (currentLanguage === 1) {
         buttonText.innerHTML = "<i>Válts angol kérdésekre</i>";
@@ -87,9 +92,20 @@ button.addEventListener("click", function () {
     }
 });
 
-
-$(document).ready(function() {
-    sendDictionaryTable(dictionaryName,currentLanguage,"apple","");
+document.addEventListener("DOMContentLoaded", function() {
+    let chatInputValue;
+    document.getElementById("chatInput").onkeydown = function(event) {
+        if (event.keyCode === 13) {
+            chatInputValue = document.getElementById("chatInput").value;
+            if (chatInputValue !== ""){
+                chat.user(chatInputValue);
+                sendDictionaryTable(dictionaryName,currentLanguage,lastQuestion,chatInputValue);
+                document.getElementById("chatInput").value = "";
+            }
+        }
+      };
 });
 
-
+document.getElementById("AIHelp").addEventListener("click", () => {
+    AIHelp();
+});

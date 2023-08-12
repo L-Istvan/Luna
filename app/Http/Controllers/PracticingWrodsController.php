@@ -8,8 +8,6 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\DictionaryTableValues;
 use Barryvdh\Debugbar\Facades\Debugbar;
 use App\Http\Controllers\ChatGPT;
-use Exception;
-use Illuminate\Support\Facades\Redis;
 
 class PracticingWrodsController extends Controller
 {
