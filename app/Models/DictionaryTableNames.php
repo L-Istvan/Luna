@@ -17,7 +17,7 @@ class DictionaryTableNames extends Model
     public $timestamps = false;
 
     public function dictionaryTableValues(){
-        return $this->hasMany(DictionaryTableValues::class,'tableName','tableName');
+        return $this->hasMany(DictionaryTableValues::class,'user_id','user_id');
     }
 
 
@@ -54,7 +54,7 @@ class DictionaryTableNames extends Model
     }
 
     public function searchRow($tableName,$english,$hun1,$hun2,$hun3){
-        return $this->hasMany(DictionaryTableValues::class,'tableName','tableName')
+        return $this->hasMany(DictionaryTableValues::class,'user_id','user_id')
         ->where('tableName',$tableName)
         ->where('english',$english)
         ->where('hungarian1',$hun1)

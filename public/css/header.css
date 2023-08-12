@@ -22,11 +22,26 @@
     font-size: 16px;
 }
 
-  .modal-header,
-  .modal-body,
-  .modal-footer {
+.dropend .dropdown-toggle{
+    color: white;
+    margin-left: 1em;
+}
+
+.dropdown .dropdown-menu{
+    display: none;
+}
+
+.dropdown:hover > .dropdown-menu, .dropend:hover > .dropdown-menu{
+    display: block;
+    margin-top: .125em;
+    margin-left: .125em;
+}
+
+.modal-header,
+.modal-body,
+.modal-footer {
     margin: 0;
-  }
+}
 
 .modal-header {
     background-color: #2B2D31;
@@ -42,4 +57,15 @@
 
 .modal-footer {
     background-color: #313338;
+}
+
+@media screen and (min-width:769px) {
+    .dropend:hover > .dropdown-menu{
+      position: absolute;
+      top: 0;
+      left: 100%;
+    }
+    .dropend .dropdown-toggle{
+      margin-left: .5em;
+    }
 }

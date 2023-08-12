@@ -1,4 +1,4 @@
-function AI(text){
+window.AI = function AI(text){
     var container = document.getElementById("container");
     var newDiv = document.createElement("div");
     newDiv.className = 'AI'
@@ -32,10 +32,9 @@ function AI(text){
     var celElem = celElemek[celElemek.length -1 ];
 
     celElem.appendChild(divContainer);
-
 }
 
-function user(text){
+window.user = function user(text){
     var container = document.getElementById("container");
     var newDiv = document.createElement("div");
     newDiv.className = 'user'

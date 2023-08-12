@@ -13,8 +13,9 @@ return new class extends Migration
     {
         Schema::create('dictionary_table_values', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('user_id')->on('dictionary_table_names')->onUpdate('cascade')->onDelete('cascade');
             $table->string('tableName');
-            $table->foreign('tableName')->references('tableName')->on('dictionary_table_names')->onUpdate('cascade')->onDelete('cascade');
             $table->string('english');
             $table->string('hungarian1')->nullable();
             $table->string('hungarian2')->nullable();

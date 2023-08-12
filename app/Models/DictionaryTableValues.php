@@ -10,6 +10,7 @@ class DictionaryTableValues extends Model
     use HasFactory;
 
     protected $fillable = [
+        'user_id',
         'tableName',
         'english',
         'hungarian1',
@@ -19,7 +20,24 @@ class DictionaryTableValues extends Model
 
     public $timestamps = false;
 
-    public function DictionaryTableNames(){
-        return $this->belongsTo(DictionaryTableNames::class,'tableName','tableName');
+    public function dictionaryTableNames(){
+        return $this->belongsTo(DictionaryTableNames::class,'user_id','user_id');
     }
+
+    public static function selectEnglishWord($user_id,$dictionaryName,$word){
+        return self::where('user_id',$user_id)
+        ->where('tableName',$dictionaryName)
+        ->where('hungarian1',$word)
+        ->pluck('english');
+    }
+
+    public static function selectHungarianWords($user_id,$dictionaryName,$word){
+        return self::where('user_id',$user_id)
+        ->where('tableName',$dictionaryName)
+        ->where('english',$word)
+        ->select('hungarian1','hungarian2','hungarian3')
+        ->get()
+        ->toArray();
+    }
+
 }

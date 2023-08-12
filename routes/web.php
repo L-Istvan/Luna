@@ -5,7 +5,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ChatController;
 use App\Http\Controllers\ReadingController;
 use App\Http\Controllers\DictionaryController;
-use PSpell\Dictionary;
+use App\Http\Controllers\PracticingWrodsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,16 +24,16 @@ Route::get('/', function () {
 
 
 Route::get('login',function(){
-    return view('auth/login')->name('login');
-});
+    return view('auth/login');
+})->name('login');
 
 Route::get('test', function () {
     return view('test');
 });
 
-Route::get('register',function(){
-    return view(('auth/register'))->name('register');
-});
+Route::get('register', function(){
+    return view(('auth/register'));
+})->name('register');
 
 Route::middleware('auth')->group(function () {
 
@@ -53,6 +53,9 @@ Route::middleware('auth')->group(function () {
     Route::patch('szotar/updateCells',[DictionaryController::class,'update'])->name('dictionary.update');
     Route::delete('szotar/deleteCells',[DictionaryController::class,'destroy'])->name('dictionary.destroy');
 
+    Route::post('sendDictionaryName',[PracticingWrodsController::class,'showLearnedWords'])->name('practicingWords.learnedWords');
+    Route::get('szotarbol_szavak_gyakorlas/{szotar}',[PracticingWrodsController::class,'index'])->name('practicingWords.index');
+    Route::post('AIHelp',[PracticingWrodsController::class,'AIHelp'])->name('practicingWords.AIHelp');
 
     Route::get('chat/idegen_szavak',[ChatController::class,'practicingUnknownWords'])->name('chat.practicingUnknownWords');
 

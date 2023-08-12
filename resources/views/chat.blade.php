@@ -6,7 +6,7 @@
 <div class="card-body">
 
     <div id="container">
-        <div class="AI">
+        <div class="AI">1
             <div class="d-flex align-items-baseline mb-4">
                 <div class="position-relative avatar">
                     <img src={{asset("images/favicon.ico")}}

@@ -1,3 +1,14 @@
+<style>
+.invisible-button {
+    background: none;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    color:white;
+}
+</style>
+
 <nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background-color: #1A1A1B">
     <div class="container-fluid">
         <a class="navbar-brand" href="/"><img class="logo" src="{{ asset('images/Logo.ico') }}"></a>
@@ -13,11 +24,31 @@
                 <ul class="dropdown-menu dropdown-menu-dark">
                   <li><a class="dropdown-item" href="{{ route('reading.index') }}">Szavakból olvasmány</a></li>
                   <li><hr class="dropdown-divider"></li>
-                  <li><a class="dropdown-item" href="{{ route('chat.practicingLearnedWords') }}">Tanult szavak gyakorlása</a>
-                    <select name="dropdown" class="rounded" style="color:rgb(3, 3, 3); background-color: rgb(80, 141, 184); border-color: rgb(90, 156, 204)">
-                        <option value="" disabled selected hidden>Szótár választás</option>
-                    </select>
-                  </li>
+                  <li class="nav-item dropend">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Tanult szavak gyakorlása
+                    </a>
+                        <ul class="dropdown-menu dropdown-menu-dark">
+                        <li class="nav-item dropend">
+                            @if(! auth()->check())
+                                <a class="dropdown-item" href="{{ route('login') }}">
+                                    Szótár használathához be kell jelentkezned
+                                </a>
+                            @elseif ( $tableNames === 0 )
+                                <a class="dropdown-item" href="" data-bs-toggle="modal" data-bs-target="#myModal">
+                                    Nincsen még szótárod, hozz létre egyet
+                                </a>
+                            @else
+                                @foreach ($tableNames as $name)
+                                    <li>
+                                        <a class="dropdown-item" href="{{ route('practicingWords.index',$name) }}">
+                                            {{ $name }} szótár
+                                        </a>
+                                    </li>
+                                @endforeach
+                            @endif
+                        </ul>
+                    </li>
                   <li><a class="dropdown-item" href="{{ route('chat.practicingUnknownWords') }}">Ismeretlen szavak gyakorlása</a></li>
                 </ul>
               </li>
@@ -26,8 +57,11 @@
                     Szótár
                 </a>
                 <ul class="dropdown-menu dropdown-menu-dark">
-                    @if ( $tableNames === 0 )
-                    <li>
+                    @if(! auth()->check())
+                        <a class="dropdown-item" href="{{ route('login') }}">
+                            Szótár használathához be kell jelentkezni
+                        </a>
+                    @elseif ( $tableNames === 0 )
                         <a class="dropdown-item" href="" data-bs-toggle="modal" data-bs-target="#myModal">
                             Nincsen még szótárod, hozz létre egyet
                         </a>

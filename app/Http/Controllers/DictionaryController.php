@@ -73,6 +73,7 @@ class DictionaryController extends Controller
         if(!$dictionaryTableNames) return response("Nem létezik ilyen szótár név",404);
 
         $dictionaryTableValues = DictionaryTableValues::firstOrCreate([
+            'user_id' => Auth::user()->id,
             'tableName' => $request['tableName'],
             'english' => $request['english'],
             'hungarian1' => $request['hun1'],
