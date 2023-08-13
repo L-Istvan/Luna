@@ -22,7 +22,7 @@
                     Szó kincs fejlesztés
                 </a>
                 <ul class="dropdown-menu dropdown-menu-dark">
-                  <li><a class="dropdown-item" href="{{ route('reading.index') }}">Szavakból olvasmány</a></li>
+                  <li><a class="dropdown-item" href="{{ route('reading.selectionPageIndex') }}">Szavakból olvasmány</a></li>
                   <li><hr class="dropdown-divider"></li>
                   <li class="nav-item dropend">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">

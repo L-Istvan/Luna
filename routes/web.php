@@ -43,8 +43,11 @@ Route::middleware('auth')->group(function () {
     Route::post('chatInput',[ChatController::class,'chat']);
     Route::get('chat/tanult_szavak', [ChatController::class,'practicingLearnedWords'])->name('chat.practicingLearnedWords');
 
-    Route::get('/olvasas/valasztas',[ReadingController::class,'index'])->name('reading.index');
-    Route::get('/olvasas/ismeretlen_szavakkal',[ReadingController::class,'show'])->name('reading.show');
+    Route::get('olvasas/valasztas',[ReadingController::class,'selectionPageIndex'])->name('reading.selectionPageIndex');
+    Route::post('olvasas/szotarbol',[ReadingController::class,'fromDictionaryIndex'])->name('reading.fromDictionaryIndex');
+    Route::get('olvasas/megadott_szavakbol',[ReadingController::class,'fromSelectedWordsIndex'])->name('reading.fromSelectedWordsIndex');
+    Route::post('generateTextfromDictionary',[ReadingController::class,'generateTextFromSavedWords'])->name('reading.generateTextFromSavedWords');
+    Route::post('translateText',[ReadingController::class,'translateText'])->name('reading.translateText');
 
     Route::get('szotar/letrehozas',[DictionaryController::class,'create'])->name('dictionary.create');
     Route::get('szotar/{szerkesztes}',[DictionaryController::class,'edit'])->name('dictionary.edit');
@@ -59,8 +62,6 @@ Route::middleware('auth')->group(function () {
     Route::get('ismeretlen_szavak_gyakorlas',[PracticingWrodsController::class,'index'])->name('practicingWords.unknownWords');
 
     Route::get('chat/idegen_szavak',[ChatController::class,'practicingUnknownWords'])->name('chat.practicingUnknownWords');
-
-    Route::post('chat/tanult_szavakbol_olvasmany',[ChatController::class,'generateTextFromSavedWords'])->name('reading.generateTextFromSavedWords');
     Route::get('chat/kerdes_felteves',[ChatController::class,'answersToQuestions'])->name('chat.answersToQuestions');
     Route::get('chat/kersesre_valasz',[ChatController::class,'askingQuestion'])->name('chat.askingQuestion');
     Route::get('chat/mondat_ellenorzes',[ChatController::class,'sentenceCheck'])->name('chat.sentenceCheck');

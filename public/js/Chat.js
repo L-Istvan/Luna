@@ -75,12 +75,12 @@ class Chat {
         var container = document.getElementById("container");
         var loadingDiv = document.createElement("div");
         loadingDiv.className = 'loading-animation';
-        loadingDiv.style.backgroundColor = 'transparent'; // Set background color to transparent
-        loadingDiv.style.width = '100px'; // Set the desired width
-        loadingDiv.style.height = '100px'; // Set the desired height
+        loadingDiv.style.backgroundColor = 'transparent';
+        loadingDiv.style.width = '100px';
+        loadingDiv.style.height = '100px';
         container.appendChild(loadingDiv);
 
-        // Create and add SVG animation here
+        // Create and add SVG animation on the loadingDiv
         var svgElem = document.createElement("object");
         svgElem.type = "image/svg+xml";
         svgElem.data = "/animation/loading.svg";
