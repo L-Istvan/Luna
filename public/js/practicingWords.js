@@ -50,7 +50,11 @@ function AIHelp(){
             level : level
         },
         dataType: 'json',
+        beforeSend: function() {
+            chat.showLoadingAnimation();
+        },
         success: function(xhr){
+            chat.hideLoadingAnimation();
             console.log(xhr);
             chat.AI(xhr);
         },

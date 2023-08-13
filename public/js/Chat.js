@@ -70,6 +70,29 @@ class Chat {
 
         celElem.appendChild(divContainer);
     }
+
+    showLoadingAnimation() {
+        var container = document.getElementById("container");
+        var loadingDiv = document.createElement("div");
+        loadingDiv.className = 'loading-animation';
+        loadingDiv.style.backgroundColor = 'transparent'; // Set background color to transparent
+        loadingDiv.style.width = '100px'; // Set the desired width
+        loadingDiv.style.height = '100px'; // Set the desired height
+        container.appendChild(loadingDiv);
+
+        // Create and add SVG animation here
+        var svgElem = document.createElement("object");
+        svgElem.type = "image/svg+xml";
+        svgElem.data = "/animation/loading.svg";
+        loadingDiv.appendChild(svgElem);
+    }
+
+    hideLoadingAnimation() {
+        var loadingDiv = document.querySelector(".loading-animation");
+        if (loadingDiv) {
+            loadingDiv.parentNode.removeChild(loadingDiv);
+        }
+    }
 }
 
 export default Chat;
