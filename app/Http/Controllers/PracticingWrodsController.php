@@ -53,6 +53,24 @@ class PracticingWrodsController extends Controller
         }
     }
 
+    private function update(string $dictionaryName, int $user_id, bool $isCorrect ,string $word){
+        $dictionaryTableValues = DictionaryTableValues::where('user_id',$user_id)
+        ->where('tableName',$dictionaryName)
+        ->where('english',$word)
+        ->first();
+        if ($isCorrect){
+            $correct_point = $dictionaryTableValues->correct_point +1;
+            $dictionaryTableValues->correct_point = $correct_point;
+            $dictionaryTableValues->proportionality = $dictionaryTableValues->incorrect_point / ($correct_point + $dictionaryTableValues->incorrect_point);
+        }
+        else{
+            $incorrect_point = $dictionaryTableValues->incorrect_point +1;
+            $dictionaryTableValues->incorrect_point = $incorrect_point;
+            $dictionaryTableValues->proportionality = $incorrect_point / ($dictionaryTableValues->correct_point + $incorrect_point);
+        }
+        $dictionaryTableValues->update();
+    }
+
     public function AIHelp(Request $request){
         $request->validate([
             'lastQuestion' => ['required','string','min:2','max:20'],
@@ -92,10 +110,13 @@ class PracticingWrodsController extends Controller
         if($request['answer'] != null or $request['answer'] != ""){
             if($this->isCorrect($request['selectedEnglish'],$request['dictionaryName'],$request['question'],$request['answer'])){
                 $message = "Helyes! Most fordítsd le a(z) ";
+                $this->update($request['dictionaryName'],Auth::user()->id,true,$request['question']);
             }
-            else $message = "Sajnos rossz válasz. Itt az újabb szó: ";
+            else {
+                $message = "Sajnos rossz válasz. Itt az újabb szó: ";
+                $this->update($request['dictionaryName'],Auth::user()->id,false,$request['question']);
+            }
         }
-
 
         if ($request['selectedEnglish']){
             return response()->json(['message' => $message,'word' => $words[$selectedIndex]['english']]);

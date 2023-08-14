@@ -15,7 +15,11 @@ class DictionaryTableValues extends Model
         'english',
         'hungarian1',
         'hungarian2',
-        'hungarian3'
+        'hungarian3',
+        'hungarina4',
+        'correct_point',
+        'incorrect_point',
+        'proportionality',
     ];
 
     public $timestamps = false;
