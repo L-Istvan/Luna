@@ -76,10 +76,6 @@ document.getElementById("chatInput").onkeydown = function(event) {
     }
 };
 
-$(document).ready(function() {
-    sendDictionaryTable(dictionaryName,currentLanguage,"apple","");
-});
-
 const button = document.getElementById("changeButton");
 const buttonText = document.getElementById("buttonText");
 
@@ -111,4 +107,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
 document.getElementById("AIHelp").addEventListener("click", () => {
     AIHelp();
+});
+
+
+$(document).ready(function() {
+    sendDictionaryTable(dictionaryName,currentLanguage,"apple","");
 });

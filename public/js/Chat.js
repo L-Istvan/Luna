@@ -34,6 +34,7 @@ class Chat {
         var celElem = celElemek[celElemek.length -1 ];
 
         celElem.appendChild(divContainer);
+        window.scrollTo(0, document.body.scrollHeight);
     }
 
     user(text){
@@ -69,6 +70,7 @@ class Chat {
         var celElem = celElemek[celElemek.length -1 ];
 
         celElem.appendChild(divContainer);
+        window.scrollTo(0, document.body.scrollHeight);
     }
 
     showLoadingAnimation() {
