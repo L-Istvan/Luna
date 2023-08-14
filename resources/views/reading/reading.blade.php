@@ -23,7 +23,7 @@
 <div class="d-flex justify-content-center">
     <div class="input d-flex flex-column align-items-center" style="margin-bottom: 70px;">
         <div class="d-flex flex-sm-row flex-column">
-            <button id="generateMoreText" class="rounded ml-sm-2" style="color: white; background-color: rgb(26, 52, 71); border-color: rgb(90, 156, 204); margin-right:10px">
+            <button id="generateMoreText" class="rounded ml-sm-2" style="color: white; background-color: rgb(26, 52, 71); border-color: rgb(90, 156, 204); margin-right:10px; display:none">
                 <span id="buttonText"><i>Írj még történetet</i></span>
             </button>
             <button class="rounded ml-sm-2" id="translateText" style="color: white; background-color: rgb(26, 52, 71); border-color: rgb(90, 156, 204);">

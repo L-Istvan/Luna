@@ -70,7 +70,6 @@ document.getElementById("chatInput").onkeydown = function(event) {
         chatInputValue = document.getElementById("chatInput").value;
         if (chatInputValue !== ""){
             chat.user(chatInputValue);
-            console.log(chatInputValue);
             sendDictionaryTable(dictionaryName,currentLanguage,lastQuestion,chatInputValue);
             document.getElementById("chatInput").value = "";
         }

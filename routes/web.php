@@ -48,6 +48,7 @@ Route::middleware('auth')->group(function () {
     Route::get('olvasas/megadott_szavakbol',[ReadingController::class,'fromSelectedWordsIndex'])->name('reading.fromSelectedWordsIndex');
     Route::post('generateTextfromDictionary',[ReadingController::class,'generateTextFromSavedWords'])->name('reading.generateTextFromSavedWords');
     Route::post('translateText',[ReadingController::class,'translateText'])->name('reading.translateText');
+    Route::post('selectionWords',[ReadingController::class,'generateTextFromSelectedWords'])->name('reading.generateTextFromSelectedWords');
 
     Route::get('szotar/letrehozas',[DictionaryController::class,'create'])->name('dictionary.create');
     Route::get('szotar/{szerkesztes}',[DictionaryController::class,'edit'])->name('dictionary.edit');

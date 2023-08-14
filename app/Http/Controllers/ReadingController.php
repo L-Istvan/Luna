@@ -22,6 +22,10 @@ class ReadingController extends Controller
         return view('reading/reading',['dictionaryName' => $request['tableName'],'chatGPT_text' => "Kis türelmet kérek."]);
     }
 
+    public function fromSelectedWordsIndex(){
+        return view('reading/reading',['dictionaryName' => "","chatGPT_text" => "Sorold fel a szavakat vesszővel elválasztva."]);
+    }
+
     public function generateTextFromSavedWords(Request $request){
         $request->validate([
             'dictionaryName' => ['required','string','min:2','max:20']
@@ -43,13 +47,37 @@ class ReadingController extends Controller
 
     public function translateText(Request $request){
         $request->validate([
-            'text' => ['required','string','min:2','max:1000']
+            'text' => ['required','string','min:2','max:1500']
+        ],
+        [
+            'text.required' => 'A szöveg mező kitöltése kötelező.',
+            'text.string' => 'A szöveg mező csak szöveget tartalmazhat.',
+            'text.min' => 'A szöveg mezőben legalább 2 karakternek kell lennie.',
+            'text.max' => 'A szöveg mezőben legfeljebb 1500 karakternek kell lennie.'
         ]);
         $request = $request->all();
 
         $chatGPT = new ChatGPT('user','translate this into Hungarian: "'.$request['text'].'"');
         $chatGPT = $chatGPT->sendToChatGPT();
 
+        return response()->json($chatGPT,200);
+    }
+
+    public function generateTextFromSelectedWords(Request $request){
+        $request->validate([
+            'text' => ['required','string','min:2','max:1000','not_regex:/[?!,.\-]/']
+        ],
+        [
+            'text.required' => 'A szöveg mező kitöltése kötelező.',
+            'text.string' => 'A szöveg mező csak szöveget tartalmazhat.',
+            'text.min' => 'A szöveg mezőben legalább 2 karakternek kell lennie.',
+            'text.max' => 'A szöveg mezőben legfeljebb 1000 karakternek kell lennie.',
+            'text.not_regex' => 'A szöveg mezőben nem lehetnek írásjelek.'
+        ]);
+        $request = $request->all();
+
+        $chatGPT = new ChatGPT('user',"Could you write me a short story using these words : ".$request['text']."?");
+        $chatGPT = $chatGPT->sendToChatGPT();
         return response()->json($chatGPT,200);
     }
 
