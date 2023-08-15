@@ -76,19 +76,14 @@
                 </ul>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle nav-color" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Kérdés gyakorlás
-                </a>
-                <ul class="dropdown-menu dropdown-menu-dark">
-                  <li><a class="dropdown-item" href="{{ route('chat.answersToQuestions') }}">Kérdésekre válaszolás</a></li>
-                  <li><a class="dropdown-item" href="{{ route('chat.askingQuestion') }}">Kérdés feltevés</a></li>
-                </ul>
+                <a class="nav-link nav-color" aria-current="page" href="{{ route('question.index') }}">Kérdés gyakorlás</a>
+
             </li>
             <li class="nav-item">
                 <a class="nav-link nav-color" aria-current="page" href="{{ route('chat.sentenceCheck') }}">Mondat ellenőrzés és javítás</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link nav-color" href="{{ route('chat.phraseLearning') }}">Kifejezések tanulása</a>
+                <a class="nav-link" href="{{ route('chat.phraseLearning') }}"><i>Kifejezések tanulása</i></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link nav-color" href="">infó</a>

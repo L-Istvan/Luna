@@ -7,6 +7,7 @@ use App\Http\Controllers\ReadingController;
 use App\Http\Controllers\DictionaryController;
 use App\Http\Controllers\PracticingWrodsController;
 use App\Http\Controllers\practicingUnknownWordsController;
+use App\Http\Controllers\QuestionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -63,6 +64,9 @@ Route::middleware('auth')->group(function () {
     Route::post('AIHelp',[PracticingWrodsController::class,'AIHelp'])->name('practicingWords.AIHelp');
     Route::get('véletlen_szavak_gyakorlas',[practicingUnknownWordsController::class,'index'])->name('practicingUnknownWords.index');
     Route::post('getQuestion',[practicingUnknownWordsController::class,'show'])->name('practicingUnknownWords.show');
+
+    Route::get('kerdes_gyakorlas',[QuestionController::class,'index'])->name('question.index');
+    Route::post('getQuestionCorrect',[QuestionController::class,'show'])->name('question.show');
 
     Route::get('chat/idegen_szavak',[ChatController::class,'practicingUnknownWords'])->name('chat.practicingUnknownWords');
     Route::get('chat/kerdes_felteves',[ChatController::class,'answersToQuestions'])->name('chat.answersToQuestions');

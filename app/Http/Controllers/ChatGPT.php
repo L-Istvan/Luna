@@ -29,8 +29,11 @@ class ChatGPT
         ])->post('https://api.openai.com/v1/chat/completions', [
             "model" => "gpt-3.5-turbo",
             "messages" => $this->message,
-            "max_tokens" => 200,
+            "max_tokens" => 300,
         ]);
+        if ($response->status() === 429) {
+            return "Túl sokszor küldtél adatot, várj egy kicsit és próbáld újra.";
+        }
         if ($response->successful()) {
             $data = json_decode($response, true);
             $content = $data['choices'][0]['message']['content'];
@@ -47,7 +50,7 @@ class ChatGPT
             "content" => $userInput[0],
         ];
         session(['history' => $arr]);
-        $AI = self::chatGPT(session('history'));
+        $AI = chatGPT(session('history'));
         $arr[] = [
             "role" => "system",
             "content" => $AI,
