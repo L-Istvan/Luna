@@ -8,6 +8,7 @@ use App\Http\Controllers\DictionaryController;
 use App\Http\Controllers\PracticingWrodsController;
 use App\Http\Controllers\practicingUnknownWordsController;
 use App\Http\Controllers\QuestionController;
+use App\Http\Controllers\SentenceCheckController;
 
 /*
 |--------------------------------------------------------------------------
@@ -67,6 +68,10 @@ Route::middleware('auth')->group(function () {
 
     Route::get('kerdes_gyakorlas',[QuestionController::class,'index'])->name('question.index');
     Route::post('getQuestionCorrect',[QuestionController::class,'show'])->name('question.show');
+
+    Route::get('mondat_ellenorzes',[SentenceCheckController::class,'index'])->name('sentenceCheck.index');
+    Route::post('getSentenceCorrect',[SentenceCheckController::class,'show'])->name('sentenceCheck.show');
+
 
     Route::get('chat/idegen_szavak',[ChatController::class,'practicingUnknownWords'])->name('chat.practicingUnknownWords');
     Route::get('chat/kerdes_felteves',[ChatController::class,'answersToQuestions'])->name('chat.answersToQuestions');

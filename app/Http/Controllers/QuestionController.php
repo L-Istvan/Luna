@@ -31,10 +31,10 @@ class QuestionController extends Controller
             'input.min' => 'A mező tartalma túl rövid!',
             'input.max' => 'A mező tartalma túl hosszú!'
         ]);
-        $request->all();
+        $request = $request->all();
         $message = $this->generate($request['input']);
 
-        if ($message === null) response()->json("Hiba történt a kérés feldolgozása során.");
+        if ($message === null) response()->json("Hiba történt a kérés feldolgozása során.",200);
         return response()->json($message,200);
     }
 }

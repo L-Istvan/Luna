@@ -80,7 +80,7 @@
 
             </li>
             <li class="nav-item">
-                <a class="nav-link nav-color" aria-current="page" href="{{ route('chat.sentenceCheck') }}">Mondat ellenőrzés és javítás</a>
+                <a class="nav-link nav-color" aria-current="page" href="{{ route('sentenceCheck.index') }}">Mondat ellenőrzés és javítás</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('chat.phraseLearning') }}"><i>Kifejezések tanulása</i></a>
