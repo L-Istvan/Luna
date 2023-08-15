@@ -39,6 +39,7 @@ function updateContainerContent(dictionaryName) {
 }
 
 function AIHelp(){
+    chat.showLoadingAnimation();
     $.ajax({
         headers:{
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -50,31 +51,17 @@ function AIHelp(){
             level : level
         },
         dataType: 'json',
-        beforeSend: function() {
-            chat.showLoadingAnimation();
-        },
         success: function(xhr){
             chat.hideLoadingAnimation();
-            console.log(xhr);
             chat.AI(xhr);
         },
         error: function(xhr){
+            chat.hideLoadingAnimation();
             toastr.error(xhr.responseJSON);
         }
     })
 }
 
-
-document.getElementById("chatInput").onkeydown = function(event) {
-    if (event.keyCode === 13) {
-        chatInputValue = document.getElementById("chatInput").value;
-        if (chatInputValue !== ""){
-            chat.user(chatInputValue);
-            sendDictionaryTable(dictionaryName,currentLanguage,lastQuestion,chatInputValue);
-            document.getElementById("chatInput").value = "";
-        }
-    }
-};
 
 const button = document.getElementById("changeButton");
 const buttonText = document.getElementById("buttonText");
@@ -111,5 +98,5 @@ document.getElementById("AIHelp").addEventListener("click", () => {
 
 
 $(document).ready(function() {
-    sendDictionaryTable(dictionaryName,currentLanguage,"apple","");
+    sendDictionaryTable(dictionaryName,currentLanguage,"+++","");
 });

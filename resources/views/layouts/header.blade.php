@@ -49,7 +49,7 @@
                             @endif
                         </ul>
                     </li>
-                  <li><a class="dropdown-item" href="{{ route('practicingWords.unknownWords') }}">Ismeretlen szavak gyakorlása</a></li>
+                  <li><a class="dropdown-item" href="{{ route('practicingUnknownWords.index') }}">Ismeretlen szavak gyakorlása</a></li>
                 </ul>
               </li>
             <li class="nav-item dropdown">

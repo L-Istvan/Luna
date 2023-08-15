@@ -1,26 +1,6 @@
 @extends('layouts.app')
 @section('content')
 
-<style>
-    @keyframes spin {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
-}
-
-.rotating-wheel {
-    width: 40px;
-    height: 40px;
-    border: 4px solid #0d6efd;
-    border-top-color: #131a40;
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-}
-</style>
-
 <link rel="stylesheet" href="{{ asset('css/chat.css') }}">
 
 <div class="card-body">

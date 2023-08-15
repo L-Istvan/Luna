@@ -6,6 +6,7 @@ use App\Http\Controllers\ChatController;
 use App\Http\Controllers\ReadingController;
 use App\Http\Controllers\DictionaryController;
 use App\Http\Controllers\PracticingWrodsController;
+use App\Http\Controllers\practicingUnknownWordsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -57,10 +58,11 @@ Route::middleware('auth')->group(function () {
     Route::patch('szotar/updateCells',[DictionaryController::class,'update'])->name('dictionary.update');
     Route::delete('szotar/deleteCells',[DictionaryController::class,'destroy'])->name('dictionary.destroy');
 
-    Route::post('sendDictionaryName',[PracticingWrodsController::class,'showLearnedWords'])->name('practicingWords.learnedWords');
     Route::get('szotarbol_szavak_gyakorlas/{szotar}',[PracticingWrodsController::class,'index'])->name('practicingWords.index');
+    Route::post('sendDictionaryName',[PracticingWrodsController::class,'show'])->name('practicingWords.show');
     Route::post('AIHelp',[PracticingWrodsController::class,'AIHelp'])->name('practicingWords.AIHelp');
-    Route::get('ismeretlen_szavak_gyakorlas',[PracticingWrodsController::class,'index'])->name('practicingWords.unknownWords');
+    Route::get('véletlen_szavak_gyakorlas',[practicingUnknownWordsController::class,'index'])->name('practicingUnknownWords.index');
+    Route::post('getQuestion',[practicingUnknownWordsController::class,'show'])->name('practicingUnknownWords.show');
 
     Route::get('chat/idegen_szavak',[ChatController::class,'practicingUnknownWords'])->name('chat.practicingUnknownWords');
     Route::get('chat/kerdes_felteves',[ChatController::class,'answersToQuestions'])->name('chat.answersToQuestions');

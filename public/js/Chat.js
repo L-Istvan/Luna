@@ -23,7 +23,7 @@ class Chat {
 
         var cardDiv = document.createElement("div");
         cardDiv.classList.add("card", "card-text", "d-inline-block", "p-2", "px-3", "m-1");
-        cardDiv.textContent = text;
+        cardDiv.innerHTML = text.replace(/\n/g, "<br>");
 
         peDiv.appendChild(cardDiv);
 

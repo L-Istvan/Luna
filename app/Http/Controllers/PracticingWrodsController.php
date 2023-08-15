@@ -12,7 +12,8 @@ use App\Http\Controllers\ChatGPT;
 class PracticingWrodsController extends Controller
 {
     public function index($dictionaryName){
-        return view('practicingWords',['dictionaryName' => $dictionaryName]);
+        return view('practicingWords/wordsFromDictionary',
+        ['dictionaryName' => $dictionaryName]);
     }
 
     private function rouletWheel($arr){
@@ -73,8 +74,14 @@ class PracticingWrodsController extends Controller
 
     public function AIHelp(Request $request){
         $request->validate([
-            'lastQuestion' => ['required','string','min:2','max:20'],
+            'lastQuestion' => ['required','string','min:2','max:40'],
             'level' => ['required','numeric','in:1,2'],
+        ],
+        [
+            'lastQuestion.required' => 'A szó nem lehet üres',
+            'lastQuestion.string' => 'A szó nem lehet üres',
+            'lastQuestion.min' => 'A szó minimum 2 karakter hosszú lehet',
+            'lastQuestion.max' => 'A szó maximum 40 karakter hosszú lehet',
         ]);
         if($request['level']){
             $chatGPT = new ChatGPT('user','I am learning English, could you explain the meaning of the word '.$request['lastQuestion'].' in a few words?');
@@ -88,7 +95,7 @@ class PracticingWrodsController extends Controller
         return response()->json($answer,200);
     }
 
-    public function showLearnedWords(Request $request){
+    public function show(Request $request){
         $request->validate([
             'dictionaryName' => ['required','string','min:2','max:20'],
             'selectedEnglish' => ['required','numeric','in:0,1'],
@@ -127,7 +134,4 @@ class PracticingWrodsController extends Controller
         }
     }
 
-    public function unknownWords(){
-        return 0;
-    }
 }
