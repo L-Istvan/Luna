@@ -55,11 +55,15 @@ class Chat {
 
         var avatarDiv = document.createElement("div");
         avatarDiv.classList.add("position-relative", "avatar")
+        avatarDiv.style.width = "75px";
         var imgElem = document.createElement("img");
-        imgElem.src = "https://nextbootstrap.netlify.app/assets/images/profiles/2.jpg";
+        imgElem.src = "/images/profile.png";
         imgElem.classList.add("img-fluid", "rounded-circle");
         imgElem.alt = "";
+
         avatarDiv.appendChild(imgElem);
+
+
 
         peDiv.appendChild(cardDiv);
 
