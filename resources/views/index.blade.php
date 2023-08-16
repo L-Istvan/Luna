@@ -89,7 +89,7 @@
 
             <div class="col-12 col-md-6 col-lg-4 mt-4 mb-6 text-center">
                 <div class="container custom-container d-flex justify-content-center align-items-center float-left">
-                    <label>infó</label>
+                    <a style="color: white; text-decoration: none;" href="{{ route('info') }}">infó</a>
                 </div>
             </div>
         </div>
