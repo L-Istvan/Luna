@@ -21,6 +21,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'API_key',
+        'request_count'
     ];
 
     /**

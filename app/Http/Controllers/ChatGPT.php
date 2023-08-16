@@ -1,12 +1,24 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Support\Facades\Http;
+use App\Models\User;
 
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Http;
 
 class ChatGPT
 {
+    private function checkRequest_count($user_id,$email){
+        $user = User::where('id',$user_id)
+        ->where('email',$email)
+        ->first();
+        if ($user->request_count !== 0){
+            $user->request_count--;
+            if ($user->save()) return true;
+        }
+        return false;
+    }
+
     private $message = [];
 
     public function __construct($role, $content)
@@ -23,6 +35,7 @@ class ChatGPT
 
     public function sendToChatGPT()
     {
+        if ($this->checkRequest_count(Auth::user()->id,Auth::user()->email) === false) return "Elérted a megengedett kéréseid számát.";
         $response = Http::withHeaders([
             "Content-Type" => "application/json",
             "Authorization" => "Bearer " . env('OPENAI_API_KEY')
