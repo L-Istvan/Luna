@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\IndexController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ChatController;
 use App\Http\Controllers\ReadingController;
@@ -21,18 +22,11 @@ use App\Http\Controllers\SentenceCheckController;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
-
+Route::get('/',[IndexController::class,'index'])->name('index');
 
 Route::get('login',function(){
     return view('auth/login');
 })->name('login');
-
-Route::get('test', function () {
-    return view('test');
-});
 
 Route::get('register', function(){
     return view(('auth/register'));
@@ -40,11 +34,7 @@ Route::get('register', function(){
 
 Route::middleware('auth')->group(function () {
 
-    Route::get('index',function () {
-        return view('index');
-    });
-    Route::post('chatInput',[ChatController::class,'chat']);
-    Route::get('chat/tanult_szavak', [ChatController::class,'practicingLearnedWords'])->name('chat.practicingLearnedWords');
+    Route::get('index',[IndexController::class,'index']);
 
     Route::get('olvasas/valasztas',[ReadingController::class,'selectionPageIndex'])->name('reading.selectionPageIndex');
     Route::post('olvasas/szotarbol',[ReadingController::class,'fromDictionaryIndex'])->name('reading.fromDictionaryIndex');
@@ -72,12 +62,10 @@ Route::middleware('auth')->group(function () {
     Route::get('mondat_ellenorzes',[SentenceCheckController::class,'index'])->name('sentenceCheck.index');
     Route::post('getSentenceCorrect',[SentenceCheckController::class,'show'])->name('sentenceCheck.show');
 
+    Route::get('info',function(){
+        return view('info');
+    })->name('info');
 
-    Route::get('chat/idegen_szavak',[ChatController::class,'practicingUnknownWords'])->name('chat.practicingUnknownWords');
-    Route::get('chat/kerdes_felteves',[ChatController::class,'answersToQuestions'])->name('chat.answersToQuestions');
-    Route::get('chat/kersesre_valasz',[ChatController::class,'askingQuestion'])->name('chat.askingQuestion');
-    Route::get('chat/mondat_ellenorzes',[ChatController::class,'sentenceCheck'])->name('chat.sentenceCheck');
-    Route::get('chat/kifejezes',[ChatController::class,'phraseLearning'])->name('chat.phraseLearning');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');

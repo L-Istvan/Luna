@@ -83,10 +83,10 @@
                 <a class="nav-link nav-color" aria-current="page" href="{{ route('sentenceCheck.index') }}">Mondat ellenőrzés és javítás</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('chat.phraseLearning') }}"><i>Kifejezések tanulása</i></a>
+                <a class="nav-link" href="#"><i>Kifejezések tanulása</i></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link nav-color" href="">infó</a>
+                <a class="nav-link nav-color" href="{{ route('info') }}">infó</a>
             </li>
         </ul>
             @if (Auth::check())
