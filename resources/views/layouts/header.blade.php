@@ -19,7 +19,7 @@
         <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll">
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle nav-color" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Szó kincs fejlesztés
+                    Szókincs fejlesztés
                 </a>
                 <ul class="dropdown-menu dropdown-menu-dark">
                   <li><a class="dropdown-item" href="{{ route('reading.selectionPageIndex') }}">Szavakból olvasmány</a></li>

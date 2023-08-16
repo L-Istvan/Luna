@@ -18,7 +18,7 @@ class QuestionController extends Controller
     }
 
     public function index(){
-        return view('question',['message'=>"Ide tudod írni a kérdést, és ha rossz akkor kijavítom."]);
+        return view('question',['message'=>"Ide tudod írni a kérdést és ha rossz, akkor kijavítom."]);
     }
 
     public function show(Request $request){

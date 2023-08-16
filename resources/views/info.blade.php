@@ -7,17 +7,17 @@
         Luna egy interaktív online szótanító webalkalmazás, amely segít a felhasználóknak bővíteni és megerősíteni a szókincsüket játékos és interaktív módon.
         <h4 class="mt-4 mb-3">Főbb jellemzők:</h4>
         <ul>
-          <li><b>Autentikáció és Személyre szabás:</b>
+          <li><b>Autentikáció és Személyreszabás:</b>
             <br>
             Az alkalmazás autentikációs rendszere biztosítja, hogy minden felhasználó számára egyéni, személyre szabott lehetőségek legyenek elérhetőek.</li>
             <br>
           <li><b>Saját Szótár Készítés: </b>
             <br>
-            A felhasználóknak lehetőségük van létrehozni egyéni szótárakat, amelyekben szavakat menthetnek és szabadon szerkeszthetnek.</li>
+            A felhasználóknak lehetőségük van létrehozni egyéni szótárakat, amelyekben szavakat menthetnek el és szabadon szerkeszthetnek.</li>
             <br>
             <li><b>Szókincs Gyakorlása:</b>
             <br>
-            Az alkalmazás rendszeresen olyan szavakat választ ki kérdésként, amelyeket a felhasználók kevésbé ismernek vagy egyáltalán nem ismernek. Az ismert szavakat kevésbé gyakran gyakoroltatja, hogy a felhasználók minél hatékonyabban bővítsék szókincsüket. Ezen felül a felhasználók saját szótáraikból is választhatnak szavakat, és ezekből generálhatnak kérdéseket angol vagy magyar nyelven. A generált válaszokat ellenőrizhetik. Amennyiben egy adott szó nem ismert, a felhasználó segítséget kérhet, ami magyarázattal szolgál a szó jelentésének megértéséhez.</li>
+            Az alkalmazás többnyire olyan szavakat választ ki kérdésként, amelyeket a felhasználók kevésbé ismernek vagy egyáltalán nem ismernek. Az ismert szavakat kevésbé gyakran gyakoroltatja, hogy a felhasználók minél hatékonyabban bővítsék szókincsüket. Ezen felül a felhasználók saját szótáraikból is választhatnak szavakat, és ezekből generálhatnak kérdéseket angol vagy magyar nyelven. A generált válaszokat ellenőrizhetik. Amennyiben egy adott szó nem ismert, a felhasználó segítséget kérhet, ami magyarázattal szolgál a szó jelentésének megértéséhez.</li>
             <br>
             <li><b>Olvasás Gyakorlása: </b>
             <br>

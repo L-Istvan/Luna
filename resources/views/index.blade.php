@@ -10,7 +10,7 @@
             <div class="col-12 col-md-6 col-lg-4 mt-4">
                 <div class="container custom-container d-flex justify-content-center align-items-center float-right">
                     <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false" style="color: white">
-                        <label>Szó kincs fejlesztés</label>
+                        <label>Szókincs fejlesztés</label>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton">
                         <li><a class="dropdown-item" href="{{ route('reading.selectionPageIndex') }}">Szavakból olvasmány</a></li>

@@ -5,7 +5,7 @@
 <div class="card-body">
 
     <div class="text-center text-slate-900 mb-4 mt-6" style="color: rgb(200, 202, 207);">
-        <h5>ELmentett szavakból olvasmány generálása</h5>
+        <h5>Elmentett szavakból olvasmány generálása</h5>
     </div>
     <div>
         <a class="nav-link dropdown-toggle text-center " style="color: rgb(98, 170, 222);" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -24,7 +24,7 @@
     </div>
 
     <div class="text-center mb-4 mt-6" style="color: rgb(200, 202, 207);">
-        <h5>Egyénileg hozzá adott szavakból olvasmány generálása</h5>
+        <h5>Egyénileg hozzáadott szavakból olvasmány generálása</h5>
     </div>
 
     <form action="{{ route('reading.fromSelectedWordsIndex') }}" method="get">
