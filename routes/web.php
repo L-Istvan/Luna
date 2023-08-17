@@ -32,6 +32,11 @@ Route::get('register', function(){
     return view(('auth/register'));
 })->name('register');
 
+Route::get('info',function(){
+    return view('info');
+})->name('info');
+
+
 Route::middleware('auth')->group(function () {
 
     Route::get('index',[IndexController::class,'index']);
@@ -61,10 +66,6 @@ Route::middleware('auth')->group(function () {
 
     Route::get('mondat_ellenorzes',[SentenceCheckController::class,'index'])->name('sentenceCheck.index');
     Route::post('getSentenceCorrect',[SentenceCheckController::class,'show'])->name('sentenceCheck.show');
-
-    Route::get('info',function(){
-        return view('info');
-    })->name('info');
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
