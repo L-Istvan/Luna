@@ -75,6 +75,8 @@ button.addEventListener("click", function () {
     } else {
         buttonText.innerHTML = "<i>Válts magyar kérdésekre</i>";
         currentLanguage = 1;
+        updateContainerContent(dictionaryName);
+        sendDictionaryTable(dictionaryName,currentLanguage,lastQuestion,"");
     }
 });
 

@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
-use Barryvdh\Debugbar\Facades\Debugbar;
 use App\Models\MostCommonWords;
+use Barryvdh\Debugbar\Facades\Debugbar;
 
 class practicingUnknownWordsController extends Controller
 {
@@ -50,6 +51,8 @@ class practicingUnknownWordsController extends Controller
         if ($request['question'] !== null and $request['answer'] !== null ){
             $message = $this->isCorrect($request['selectedEnglish'],$request['question'],$request['answer'],$request['question']);
         }
+
+        if ($message !== "") $message = Str::title(str_replace(',', ', ', $message));
 
         if ($request['selectedEnglish'] == 1){
             $question = MostCommonWords::where('id',$random)->pluck('english');

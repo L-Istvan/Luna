@@ -48,7 +48,6 @@ class PracticingWrodsController extends Controller
         }
         if ($selectedEnglish == 0){
             $correctAnswer = DictionaryTableValues::selectEnglishWord(Auth::user()->id,$dictionaryName,$question);
-            Debugbar::info($correctAnswer);
             if ($correctAnswer[0] === $answer) return true;
             return false;
         }
