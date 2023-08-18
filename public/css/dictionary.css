@@ -1,0 +1,27 @@
+:root{
+    --table_header_backround: #1e1f22;
+    --table_background: #0d3936;
+    --header-color:rgb(231, 236, 243);
+}
+
+th:first-child,
+td:first-child {
+    position: sticky;
+    left: 0;
+    z-index: 1;
+    background-color: var(--table_header_backround);
+}
+
+.table td {
+    white-space: nowrap;
+    background-color: var(--table_background);
+  }
+  .table th{
+      background-color: var(--table_header_backround);
+      color:var(--header-color);
+  }
+
+.header-button-color{
+    color:var(--header-color);
+    font-size: 18px;
+}
