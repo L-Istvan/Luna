@@ -3,10 +3,8 @@ Luna egy interaktív online szótanító webalkalmazás, amely segít a felhaszn
 
 ## Használat
 
-- Látogass el a [https://angolszavaktanulas.hu][1] címre.
-
-[Luna] weboldala az [https://angolszavaktanulas.hu][1] oldalán található.
-
+Látogass el a [https://angolszavaktanulas.hu][1] címre.
+  
 [1]: https://angolszavaktanulas.hu/
 
 ## Főbb jellemzők:
