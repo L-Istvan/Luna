@@ -1,6 +1,11 @@
 # Luna
 Luna egy interaktív online szótanító webalkalmazás, amely segít a felhasználóknak bővíteni és megerősíteni a szókincsüket játékos és interaktív módon.
-Főbb jellemzők:
+
+[Luna] weboldala az [angolszavaktanulas.hu][1] oldalán található.
+
+[1]: https://www.google.com/](https://angolszavaktanulas.hu/
+
+## Főbb jellemzők:
 
 ### Autentikáció és Személyreszabás:
   Az alkalmazás autentikációs rendszere biztosítja, hogy minden felhasználó számára egyéni, személyre szabott lehetőségek legyenek elérhetőek.
