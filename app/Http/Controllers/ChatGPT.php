@@ -42,7 +42,7 @@ class ChatGPT
         ])->post('https://api.openai.com/v1/chat/completions', [
             "model" => "gpt-3.5-turbo",
             "messages" => $this->message,
-            "max_tokens" => 600,
+            "max_tokens" => 400,
         ]);
         if ($response->status() === 429) {
             return "Túl sokszor küldtél adatot, várj egy kicsit és próbáld újra.";
