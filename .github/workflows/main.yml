@@ -1,1 +1,17 @@
-
+on: push
+name: 🚀 Deploy website on push
+jobs:
+  web-deploy:
+    name: 🎉 Deploy
+    runs-on: ubuntu-latest
+    steps:
+    - name: 🚚 Get latest code
+      uses: actions/checkout@v3
+    
+    - name: 📂 Sync files
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+      with:
+        server: ftp.nethely.hu
+        username: Istvan1000
+        ftp-password: ${{ secrets.STAGING_FTP_PASSWORD }}
+        local-dir: /Luna/
