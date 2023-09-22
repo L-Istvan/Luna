@@ -25,7 +25,7 @@
             <br>
             <li><b>Kérdések és Mondatok Gyakorlása: </b>
             <br>
-            A felhasználók gyakorolhatják a kérdéseket és mondatokat az alkalmazás segítségével. Az alkalmazás ellenőrzi, kijavítja és magyarázza az esetleges hibákat, így segítve a felhasználókat a tanulás során.</li>
+            A felhasználók gyakorolhatják a kérdéseket és mondatokat az alkalmazás segítségével. Az alkalmazás ellenőrzi, kijavítja és magyarázza az esetleges hibákat, így segítve a felhasználókat a tanulás során._________</li>
         </ul>
       </div>
 </div>
