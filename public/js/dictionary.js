@@ -1,4 +1,7 @@
-var tableName = document.getElementById('tableNameId').innerHTML.split(' ');
+var tableNameElement = document.getElementById('tableNameId');
+var tableName = tableNameElement.textContent;
+
+tableName = tableName.replace(' szótár', '');
 
 var edit = false;
 var save = false;
@@ -50,13 +53,13 @@ function addEventListenersToButtons(row) {
 
       if (edit) {
         if (inputs[0].value !== originalEnglish || inputs[1].value !== origHungarian1 || inputs[2].value !== origHungarian2 || inputs[3].value !== origHungarian3) {
-            updateCells(tableName[0], originalEnglish, inputs[0].value, origHungarian1,inputs[1].value, origHungarian2,inputs[2].value, origHungarian3, inputs[3].value);
+            updateCells(tableName, originalEnglish, inputs[0].value, origHungarian1,inputs[1].value, origHungarian2,inputs[2].value, origHungarian3, inputs[3].value);
         }
       }
 
       if (!edit) {
         console.log(inputs[0].value)
-        if(inputs[0].value != null) actionCells('/szotar/addCells',"POST",tableName[0],inputs[0].value,inputs[1].value,inputs[2].value,inputs[3].value);
+        if(inputs[0].value != null) actionCells('/szotar/addCells',"POST",tableName,inputs[0].value,inputs[1].value,inputs[2].value,inputs[3].value);
     }
     });
 
@@ -64,7 +67,7 @@ function addEventListenersToButtons(row) {
           const row = deleteButton.parentNode.parentNode;
           const inputs = row.querySelectorAll('.form-control');
           row.parentNode.removeChild(row);
-          actionCells('/szotar/deleteCells',"DELETE",tableName[0],inputs[0].value,inputs[1].value,inputs[2].value,inputs[3].value);
+          actionCells('/szotar/deleteCells',"DELETE",tableName,inputs[0].value,inputs[1].value,inputs[2].value,inputs[3].value);
     });
 }
 
