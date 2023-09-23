@@ -3,7 +3,7 @@
 
 <div class="card-body" style="border: none;">
     <div class="container">
-        <h3 class="text-center mb-4 mt-3 mt-md-0">Hobbi projektemről</h3>
+        <h3 class="text-center mb-4 mt-3 mt-md-0">Projektről</h3>
         Luna egy interaktív online szótanító webalkalmazás, amely segít a felhasználóknak bővíteni és megerősíteni a szókincsüket játékos és interaktív módon.
         <h4 class="mt-4 mb-3">Főbb jellemzők:</h4>
         <ul>
@@ -25,7 +25,7 @@
             <br>
             <li><b>Kérdések és Mondatok Gyakorlása: </b>
             <br>
-            A felhasználók gyakorolhatják a kérdéseket és mondatokat az alkalmazás segítségével. Az alkalmazás ellenőrzi, kijavítja és magyarázza az esetleges hibákat, így segítve a felhasználókat a tanulás során._________</li>
+            A felhasználók gyakorolhatják a kérdéseket és mondatokat az alkalmazás segítségével. Az alkalmazás ellenőrzi, kijavítja és magyarázza az esetleges hibákat, így segítve a felhasználókat a tanulás során.</li>
         </ul>
       </div>
 </div>
