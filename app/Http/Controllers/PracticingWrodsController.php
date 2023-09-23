@@ -53,6 +53,12 @@ class PracticingWrodsController extends Controller
         }
     }
 
+    private function querySelectedHungarianWords($dictionaryName,$question){
+        $correctAnswerArray = DictionaryTableValues::selectHungarianWords(Auth::user()->id,$dictionaryName,$question);
+        $vmi = implode(", ",$correctAnswerArray[0]);
+        return implode(", ",$correctAnswerArray[0]);
+    }
+
     private function update(string $dictionaryName, int $user_id, bool $isCorrect ,string $word){
         $dictionaryTableValues = DictionaryTableValues::where('user_id',$user_id)
         ->where('tableName',$dictionaryName)
@@ -115,11 +121,12 @@ class PracticingWrodsController extends Controller
         $message = "";
         if($request['answer'] != null or $request['answer'] != ""){
             if($this->isCorrect($request['selectedEnglish'],$request['dictionaryName'],$request['question'],$request['answer'])){
-                $message = "Helyes! Most fordítsd le a(z) ";
+                $message = "<span style='color: #14ef21;'>    Helyes! Most fordítsd le a(z) </span>";
                 $this->update($request['dictionaryName'],Auth::user()->id,true,$request['question']);
             }
             else {
-                $message = "Sajnos rossz válasz. Itt az újabb szó: ";
+                $hungarianWords = $this->querySelectedHungarianWords($request['dictionaryName'],$request['question']);
+                $message = "<span style='color: red;'>Sajnos rossz válasz.</span> <span style='color: gray;'>A helyes válasz(ok): $hungarianWords</span> \nItt az újabb szó: ";
                 $this->update($request['dictionaryName'],Auth::user()->id,false,$request['question']);
             }
         }
