@@ -9,8 +9,8 @@
         <div class="row" style="margin-top: 120px">
             <div class="col-12 col-md-6 col-lg-4 mt-4">
                 <div class="container custom-container d-flex justify-content-center align-items-center float-right">
-                    <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false" style="color: white">
-                        <label>Szókincs fejlesztés</label>
+                    <button class="btn dropdown-toggle practicingWords-dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false" style="color: white">
+                        <a class="full-width-button">Szókincs fejlesztés</a>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton">
                         <li><a class="dropdown-item" href="{{ route('reading.selectionPageIndex') }}">Szavakból olvasmány</a></li>
@@ -46,8 +46,8 @@
             </div>
             <div class="col-12 col-md-6 col-lg-4 mt-4">
                 <div class="container custom-container d-flex justify-content-center align-items-center">
-                    <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false" style="color: white">
-                        <label>Szótár</label>
+                    <button class="btn dropdown-toggle dictionary-dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false" style="color: white">
+                        <a class="full-width-button">Szótár</a>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-dark">
                         @if(! auth()->check())
@@ -71,13 +71,13 @@
             </div>
             <div class="col-12 col-md-6 col-lg-4 mt-4 ">
                 <div class="container custom-container d-flex justify-content-center align-items-center float-left">
-                    <a style="color: white; text-decoration: none;" href="{{ route('question.index') }}">Kérdés gyakorlás</a>
+                    <a class="full-width-button" href="{{ route('question.index') }}">Kérdés gyakorlás</a>
                   </div>
             </div>
 
             <div class="col-12 col-md-6 col-lg-4 mt-4 text-center">
                 <div class="container custom-container d-flex justify-content-center align-items-center float-right">
-                    <a style="color: white; text-decoration: none;" href="{{ route('sentenceCheck.index') }}">Mondat ellenőrzés és javítás</a>
+                    <a class="full-width-button" href="{{ route('sentenceCheck.index') }}">Mondat ellenőrzés és javítás</a>
                 </div>
             </div>
 
@@ -89,7 +89,7 @@
 
             <div class="col-12 col-md-6 col-lg-4 mt-4 mb-6 text-center">
                 <div class="container custom-container d-flex justify-content-center align-items-center float-left">
-                    <a style="color: white; text-decoration: none;" href="{{ route('info') }}">infó</a>
+                    <a class="full-width-button" href="{{ route('info') }}">infó</a>
                 </div>
             </div>
         </div>
