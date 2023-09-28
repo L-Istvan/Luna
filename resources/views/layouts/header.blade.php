@@ -1,14 +1,3 @@
-<style>
-.invisible-button {
-    background: none;
-    border: none;
-    padding: 0;
-    font: inherit;
-    cursor: pointer;
-    color:white;
-}
-</style>
-
 <nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background-color: #1A1A1B">
     <div class="container-fluid">
         <a class="navbar-brand" href="/"><img class="logo" src="{{ asset('images/Logo.ico') }}"></a>
@@ -34,18 +23,8 @@
                                 <a class="dropdown-item" href="{{ route('login') }}">
                                     Szótár használathához be kell jelentkezned
                                 </a>
-                            @elseif ( $tableNames === 0 )
-                                <a class="dropdown-item" href="" data-bs-toggle="modal" data-bs-target="#myModal">
-                                    Nincsen még szótárod, hozz létre egyet
-                                </a>
                             @else
-                                @foreach ($tableNames as $name)
-                                    <li>
-                                        <a class="dropdown-item" href="{{ route('practicingWords.index',$name) }}">
-                                            {{ $name }} szótár
-                                        </a>
-                                    </li>
-                                @endforeach
+                                <div id="dynamic-dropdown-practicingWords"></div>
                             @endif
                         </ul>
                     </li>
@@ -61,17 +40,11 @@
                         <a class="dropdown-item" href="{{ route('login') }}">
                             Szótár használathához be kell jelentkezni
                         </a>
-                    @elseif ( $tableNames === 0 )
-                        <a class="dropdown-item" href="" data-bs-toggle="modal" data-bs-target="#myModal">
-                            Nincsen még szótárod, hozz létre egyet
-                        </a>
                     @else
                         <a class="dropdown-item" href="" data-bs-toggle="modal" data-bs-target="#myModal">
-                            Új szótár létrehozás
+                            Szótárral műveletek
                         </a>
-                        @foreach ($tableNames as $name)
-                            <li><a class="dropdown-item" href="{{ route('dictionary.edit',$name) }}">{{ $name }}</a></li>
-                        @endforeach
+                        <div id="dynamic-dropdown-dictionary-edit"></div>
                     @endif
                 </ul>
             </li>
@@ -114,33 +87,39 @@
       <div class="modal-content">
 
         <div class="modal-header">
-          <h4 class="modal-title">Szótár létrehozás</h4>
+          <h4 class="modal-title text-dark">Szerkesztés</h4>
           <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
         </div>
-
         <div class="modal-body">
+            <h4 class="modal-title">Szótár létrehozás</h4>
             <label id="error"></label>
             @error('modalInput')
                 <div class="alert alert-danger">{{ $message }}</div>
-             @enderror
-            <div class="d-flex justify-content-start">
+            @enderror
+            <div class="d-flex justify-content-between align-items-center mb-3">
                 <input id="modalInput" type="text" name="modalInput" placeholder="Tábla neve">
+                <div>
+                    <button type="submit" class="btn btn-success ml-2" onclick="submitModalInput()">Mentés</button>
+                </div>
             </div>
-            <div class="d-flex justify-content-end">
-                <button type="submit" class="btn btn-success" onclick="submitModalInput()">Mentés</button>
-                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Mégse</button>
+
+            <hr class="custom-hr">
+
+            <h4 class="modal-title">Szótár törlés</h4>
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <select class="custom-select mt-4" name="dictionarySelect" id="dictionarySelect"></select>
+                  <button type="button" class="btn btn-danger mt-3" onclick="deleteDictionary()">Szótár Törlés</button>
             </div>
         </div>
       </div>
     </div>
   </div>
-
   <script>
-    let dropdowns = document.querySelectorAll('.dropdown-toggle')
+   /* let dropdowns = document.querySelectorAll('.dropdown-toggle')
     dropdowns.forEach((dd)=>{
         dd.addEventListener('click', function (e) {
             var el = this.nextElementSibling
             el.style.display = el.style.display==='block'?'none':'block'
         })
-    })
+    })*/
   </script>

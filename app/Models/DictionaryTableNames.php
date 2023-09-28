@@ -50,7 +50,6 @@ class DictionaryTableNames extends Model
         return 0;
     }
 
-
     public static function existsTableNameByUserId($tableName,$user_id){
         return DictionaryTableNames::where('tableName',$tableName)->where('user_id',$user_id)->first();
     }

@@ -10,6 +10,7 @@ use App\Http\Controllers\PracticingWrodsController;
 use App\Http\Controllers\practicingUnknownWordsController;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\SentenceCheckController;
+use App\Http\Controllers\HeaderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,6 +37,7 @@ Route::get('info',function(){
     return view('info');
 })->name('info');
 
+Route::get('header',[HeaderController::class,'show'])->name('header.getTableNames');
 
 Route::middleware('auth')->group(function () {
 
@@ -54,6 +56,7 @@ Route::middleware('auth')->group(function () {
     Route::post('szotar/addCells',[DictionaryController::class,'storeCells'])->name('dictionary.storeCells');
     Route::patch('szotar/updateCells',[DictionaryController::class,'update'])->name('dictionary.update');
     Route::delete('szotar/deleteCells',[DictionaryController::class,'destroy'])->name('dictionary.destroy');
+    Route::delete('szotar/deleteDictionary',[DictionaryController::class,'destroyDictionary'])->name('dictionary.destroyDictionary');
 
     Route::get('szotarbol_szavak_gyakorlas/{szotar}',[PracticingWrodsController::class,'index'])->name('practicingWords.index');
     Route::post('sendDictionaryName',[PracticingWrodsController::class,'show'])->name('practicingWords.show');

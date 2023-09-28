@@ -1,5 +1,8 @@
 :root{
     --menu_background: #0d6efd;
+    --modal_header_background: whitesmoke;
+    --modal_body_background: whitesmoke;
+    --override_btn_danger: rgb(186, 37, 37);
 }
 
 .navbar-toggler-icon{
@@ -43,20 +46,26 @@
     margin: 0;
 }
 
-.modal-header {
-    background-color: #2B2D31;
+.modal-header{
+    background-color: var(--modal_header_background);
 }
 
-.modal-title{
-    color:white;
+.modal-body{
+    background-color: var(--modal_body_background);
 }
 
-.modal-body {
-    background-color: #313338;
+.custom-hr{
+    border-top: 3px double black;
 }
 
-.modal-footer {
-    background-color: #313338;
+.custom-select{
+    width: 224px;
+    height: 30px;
+    background-color: white;
+}
+
+.btn-danger{
+    background-color: var(--override_btn_danger);
 }
 
 @media screen and (min-width:769px) {

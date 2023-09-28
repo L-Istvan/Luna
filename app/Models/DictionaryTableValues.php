@@ -12,6 +12,7 @@ class DictionaryTableValues extends Model
     protected $fillable = [
         'user_id',
         'tableName',
+        'tableID',
         'english',
         'hungarian1',
         'hungarian2',
@@ -25,7 +26,7 @@ class DictionaryTableValues extends Model
     public $timestamps = false;
 
     public function dictionaryTableNames(){
-        return $this->belongsTo(DictionaryTableNames::class,'user_id','user_id');
+        return $this->belongsTo(DictionaryTableNames::class,'tableID','id');
     }
 
     public static function selectEnglishWord($user_id,$dictionaryName,$word){

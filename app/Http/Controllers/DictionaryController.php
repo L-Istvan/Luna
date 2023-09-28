@@ -12,17 +12,17 @@ class DictionaryController extends Controller
 {
     public function customValidate($request){
         $request->validate([
-            'tableName' => ['required','string','min:2','max:20'],
-            'english' => ['required','string','min:2','max:20'],
-            'hun1' => ['nullable','string','max:20'],
-            'hun2' => ['nullable','string','min:2','max:20'],
-            'hun3' => ['nullable','string','max:20'],
+            'tableName' => ['required','string','min:2','max:40'],
+            'english' => ['required','string','min:2','max:40'],
+            'hun1' => ['nullable','string','max:40'],
+            'hun2' => ['nullable','string','min:2','max:40'],
+            'hun3' => ['nullable','string','max:40'],
         ],
         [
             'required' => "Az angol mező kitöltése kötelező",
             'string' => "Csak karakterlánct lehet megadni.",
             'min' => "Legalább 2 karakternél nagyobb kell lenni vagy üresen hagyni a mezőt.",
-            'max' => "Legfeljebb 20 karaktert lehet megadni."
+            'max' => "Legfeljebb 40 karaktert lehet megadni."
         ]);
     }
 
@@ -46,22 +46,20 @@ class DictionaryController extends Controller
 
     public function store(Request $request){
         $request->validate([
-            'modalInput' => ['required','string','max:10','min:2']
+            'modalInput' => ['required','string','max:40','min:2']
         ],
         [
             'required' => "A mező kitöltése kötelező",
             'string' => "Csak karakterlánct lehet megadni.",
             'min' => "Legalább 2 karakternél nagyobb kell lenni vagy üresen hagyni a mezőt.",
-            'max' => "Legfeljebb 20 karaktert lehet megadni."
+            'max' => "Legfeljebb 40 karaktert lehet megadni."
         ]);
 
-        try {
-            $result = DictionaryTableNames::insertTableNameIfNotSame(Auth::user()->id,$request->input('modalInput'));
-            if ($result) return response('Sikeres mentés',200);
-            if ($result == 0) return response("Sikertelen mentés, létezik ez a tábla név.");
-        } catch (\Throwable $th) {
-            response("Valami hiba történt.");
-        }
+        $result = DictionaryTableNames::insertTableNameIfNotSame(Auth::user()->id,$request->input('modalInput'));
+        if ($result) return response()->json('Sikeres mentés',201);
+        if ($result == 0) return response()->json(["message" =>"Létezik ez a tábla név."],409);
+        return response()->json("Sikertelen mentés",500);
+
     }
 
     public function storeCells(Request $request){
@@ -75,6 +73,7 @@ class DictionaryController extends Controller
         $dictionaryTableValues = DictionaryTableValues::firstOrCreate([
             'user_id' => Auth::user()->id,
             'tableName' => $request['tableName'],
+            'tableID' => $dictionaryTableNames->id,
             'english' => $request['english'],
             'hungarian1' => $request['hun1'],
             'hungarian2' => $request['hun2'],
@@ -137,4 +136,23 @@ class DictionaryController extends Controller
 
         return response()->json("Sikeretelen törlés",400);
     }
+
+    public function destroyDictionary(Request $request){
+        $request->validate([
+            'dictionary' => ['required','string','max:40','min:2']
+        ],
+        [
+            'required' => "Nincs megadva a szótár neve.",
+        ]);
+        $request = $request->all();
+
+        $dictionaryTableNames =  DictionaryTableNames::existsTableNameByUserId($request['dictionary'],Auth::user()->id);
+        if (!$dictionaryTableNames) return response()->json("Nem létezik ilyen szótár név.",404);
+
+        $dictionaryTableNames= DictionaryTableNames::where('user_id',Auth::user()->id)->where('tableName',$request['dictionary'])->first();
+
+        if($dictionaryTableNames->delete()) return response()->json("Sikeres törlés",200);
+        else return response()->json("Sikertelen törlés",500);
+    }
+
 }
